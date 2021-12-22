@@ -1,4 +1,4 @@
-package com.schoolofnet.webflux;
+package com.schoolofnet.webflux.controller;
 
 import org.reactivestreams.Publisher;
 import org.springframework.web.bind.annotation.GetMapping;
