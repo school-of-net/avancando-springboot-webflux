@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: webflux
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:33060/webflux
+    username: root
+    password: root
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    database: mysql
+
+server:
+  port: 8081
+
