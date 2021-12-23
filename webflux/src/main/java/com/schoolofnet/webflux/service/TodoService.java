@@ -3,7 +3,6 @@ package com.schoolofnet.webflux.service;
 import com.schoolofnet.webflux.model.Todo;
 import com.schoolofnet.webflux.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,8 +10,6 @@ import org.springframework.transaction.support.TransactionTemplate;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
-
-import java.util.Optional;
 
 /**
  * created by:
