@@ -29,6 +29,10 @@ public class TodoService {
     }
 
     public Mono<Todo> salvar(final Todo todo) {
-        return null;
+        Mono op = Mono.fromCallable(() -> this.transactionTemplate.execute(action -> {
+            final Todo newTodo = this.repository.save(todo);
+            return newTodo;
+        }));
+        return op;
     }
 }
