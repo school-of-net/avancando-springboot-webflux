@@ -30,8 +30,8 @@ public class TodoService {
         this.jdScheduler = jdScheduler;
     }
 
-    public Mono<Optional<Todo>> obterPorId(Long id) {
-        return Mono.just(this.repository.findById(id));
+    public Mono<Todo> obterPorId(Long id) {
+        return Mono.justOrEmpty(this.repository.findById(id));
     }
 
     public Mono<Todo> salvar(final Todo todo) {

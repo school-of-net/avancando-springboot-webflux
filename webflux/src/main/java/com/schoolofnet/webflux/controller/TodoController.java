@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Optional;
@@ -30,7 +31,7 @@ public class TodoController {
 
     @GetMapping("{id}")
     @ResponseBody
-    public Mono<Optional<Todo>> obterPorId(@PathVariable final Long id) {
+    public Mono<Todo> obterPorId(@PathVariable final Long id) {
         return todoService.obterPorId(id);
     }
 
