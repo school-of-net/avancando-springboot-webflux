@@ -8,6 +8,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 
+import java.util.Optional;
+
 /**
  * created by:
  *
@@ -28,6 +30,10 @@ public class TodoService {
         this.jdScheduler = jdScheduler;
     }
 
+    public Mono<Optional<Todo>> obterPorId(Long id) {
+        return Mono.just(this.repository.findById(id));
+    }
+
     public Mono<Todo> salvar(final Todo todo) {
         Mono op = Mono.fromCallable(() -> this.transactionTemplate.execute(action -> {
             final Todo newTodo = this.repository.save(todo);
@@ -35,4 +41,6 @@ public class TodoService {
         }));
         return op;
     }
+
+
 }

@@ -2,11 +2,16 @@ package com.schoolofnet.webflux.controller;
 
 import com.schoolofnet.webflux.model.Todo;
 import com.schoolofnet.webflux.service.TodoService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
+
+import java.util.Optional;
 
 /**
  * created by:
@@ -21,6 +26,12 @@ public class TodoController {
 
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
+    }
+
+    @GetMapping("{id}")
+    @ResponseBody
+    public Mono<Optional<Todo>> obterPorId(@PathVariable final Long id) {
+        return todoService.obterPorId(id);
     }
 
     @PostMapping
