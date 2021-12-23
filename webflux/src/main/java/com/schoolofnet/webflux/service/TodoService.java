@@ -5,6 +5,7 @@ import com.schoolofnet.webflux.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 
@@ -22,12 +23,16 @@ public class TodoService {
     private final TransactionTemplate transactionTemplate;
 
     @Qualifier("jdbcSchedule")
-    private final Scheduler jdScheduler;
+    private final Scheduler jdcScheduler;
 
-    public TodoService(TodoRepository repository, TransactionTemplate transactionTemplate, Scheduler jdScheduler) {
+    public TodoService(TodoRepository repository, TransactionTemplate transactionTemplate, Scheduler jdcScheduler) {
         this.repository = repository;
         this.transactionTemplate = transactionTemplate;
-        this.jdScheduler = jdScheduler;
+        this.jdcScheduler = jdcScheduler;
+    }
+
+    public Flux<Todo> obterTodos() {
+        return Flux.defer(() -> Flux.fromIterable(this.repository.findAll())).subscribeOn(jdcScheduler);
     }
 
     public Mono<Todo> obterPorId(Long id) {
@@ -41,6 +46,4 @@ public class TodoService {
         }));
         return op;
     }
-
-
 }

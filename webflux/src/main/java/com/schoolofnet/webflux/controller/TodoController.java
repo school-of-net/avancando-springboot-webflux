@@ -29,6 +29,12 @@ public class TodoController {
         this.todoService = todoService;
     }
 
+    @GetMapping
+    @ResponseBody
+    public Flux<Todo> obterTodos() {
+        return this.todoService.obterTodos();
+    }
+
     @GetMapping("{id}")
     @ResponseBody
     public Mono<Todo> obterPorId(@PathVariable final Long id) {

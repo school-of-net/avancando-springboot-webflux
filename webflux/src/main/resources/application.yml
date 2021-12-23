@@ -13,6 +13,8 @@ spring:
     generate-ddl: true
     show-sql: true
     database: mysql
+    properties:
+      hibernate.format_sql: true
 
 server:
   port: 8081
