@@ -6,6 +6,8 @@ spring:
     url: jdbc:mysql://localhost:33060/webflux
     username: root
     password: root
+    hikari:
+      maximum-pool-size: 100
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true

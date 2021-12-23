@@ -1,7 +1,7 @@
 package com.schoolofnet.webflux.repository;
 
 import com.schoolofnet.webflux.model.Todo;
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  * @author rafael for DevDusCorre on 22/12/2021
  */
 @Repository
-public interface TodoRepository extends ReactiveCrudRepository<Todo, Long> {
+public interface TodoRepository extends CrudRepository<Todo, Long> {
 }
