@@ -2,6 +2,8 @@ package com.schoolofnet.webflux.controller;
 
 import com.schoolofnet.webflux.model.Todo;
 import com.schoolofnet.webflux.service.TodoService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,5 +46,10 @@ public class TodoController {
     @PostMapping
     public Mono<Todo> salvar(@RequestBody final Todo todo) {
         return this.todoService.salvar(todo);
+    }
+
+    @DeleteMapping("{id}")
+    public Mono<ResponseEntity<Void>> excluir(@PathVariable final Long id) {
+        return this.todoService.excluir(id);
     }
 }
